@@ -22,11 +22,13 @@ print('d:')
 print(d)
 print(type(d))
 
+#binario
 e=0B1010
 print('e:')
 print(e)
 print(type(e))
 
+#hexa
 f=0XFF
 print('f:')
 print(f)
