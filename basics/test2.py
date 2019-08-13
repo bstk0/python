@@ -1,0 +1,17 @@
+s=["BRAZIL","USA","INDIA"]
+print(s)
+#s.add("ARGENTINA")
+#print(s)
+s.insert(len(s),"ARGENTINA")
+print(s)
+s.append('Russia')
+print(s)
+s.remove("USA")
+print(s)
+s.insert(1,'Japan')
+print(s)
+#-----------------------------
+lista={"india","china"}
+lista.append("russia")
+lista.remove(2)
+print(list)

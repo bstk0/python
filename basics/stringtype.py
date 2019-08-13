@@ -38,4 +38,5 @@ print(s.upper())
 print(s.lower())
 print(s.title())
 
+#string to decimal => float()
 
