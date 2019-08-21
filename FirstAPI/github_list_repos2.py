@@ -26,5 +26,9 @@ repo_list = get_repos('bstk0')
 
 if repo_list is not None:
     print(repo_list)
+    y = json.loads(repo_list)
+    # the result is a Python dictionary:
+    print("login:",y["login"])
+    print("url:",y["url"])
 else:
     print('No Repo List Found')    
