@@ -14,6 +14,9 @@ empDB=[
  'title':'Sr Software Engineer'
  }
  ]
+@app.route('/')
+def hello_world():
+    return 'Bisterço, Hello from Flask!'
 
 @app.route('/empdb/employee',methods=['GET'])
 def getAllEmp():
