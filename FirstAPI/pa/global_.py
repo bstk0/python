@@ -11,8 +11,8 @@ class Global:
         return self.__local
 
     def __checkUrl(self,url):
-        if url.__contains__("127"):
+        if url.__contains__("127") or url.__contains__("5000"):
             return True
         else:
-            False
+            return False
             
