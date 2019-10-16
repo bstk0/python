@@ -3,6 +3,7 @@
 
 from flask import Flask
 from flask import request
+from flask_cors import CORS
 from pa_carro_api import carros_api
 from pa_emp_api import empdb_api
 from global_ import Global
@@ -11,6 +12,7 @@ LOCAL = True
 glb = Global()
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.register_blueprint(carros_api, url_prefix='/pstgr')
 app.register_blueprint(empdb_api, url_prefix='/empdb') 
@@ -23,7 +25,7 @@ def hello_world():
     print('IsLocal? ',glb.isLocal(request.url))
     return 'Hello from Flask!'
 
-# Importante: Para o pythonanywhere.com comentar as linhas abaixo
+# IMPORTANTE: Para DEPLOY no pythonanywhere.com COMENTAR AS LINHAS ABAIXO
 #if __name__ == '__main__':
-if LOCAL:
-    app.run()
+#if LOCAL:
+#    app.run()
