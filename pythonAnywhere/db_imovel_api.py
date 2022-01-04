@@ -19,20 +19,21 @@ def buscar_dados_imovel():
     # #return jsonify(request.content)
     # return returnRequest.content
     
-    data_text = {
+    data = {
     "dataSource": "Cluster0",
     "database": "dbe",
     "collection": "imovel",
     "sort": { "nome" : 1} }
     
-    data = jsonify(data_text);
+    #data = jsonify(data_text);
 
     #data = request.get_json();
     auth = {'api-key' : 'Cnf5kpOdWfE5oAJ5vTGoddZ0ZNI7acYh6G8sfAP6xye2imMfKKf1TMM5gQ35Six3' }    
     r = requests.post("https://data.mongodb-api.com/app/data-plfzo/endpoint/data/beta/action/find",json=data  ,headers=auth);
     #print(request.content);
     #return jsonify(request.content)
-    return str(r.status_code)
+    #return str(r.status_code)
+    return r.content
 
 
 
