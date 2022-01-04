@@ -1,7 +1,8 @@
 #
 import requests
+import json
 from flask import Blueprint
-from flask import jsonify
+#from flask import jsonify
 #from flask import request
 #from flask import abort
 
@@ -12,29 +13,27 @@ imovel_api = Blueprint('imovel_api', __name__)
 
 @imovel_api.route("/imovel", methods=['GET']) 
 def buscar_dados_imovel():
-    # dias = request.args.get('dias', default='10', type = str)
-    # auth = {'Authorization' : 'Anonymous app:dbapp' }    
-    # returnRequest = requests.get("http://paraio.com/v1/movims?sort=timestamp&limit="+dias ,headers=auth);
-    # #print(request.content);
-    # #return jsonify(request.content)
-    # return returnRequest.content
+    url = "https://data.mongodb-api.com/app/data-plfzo/endpoint/data/beta/action/find"
     
-    data = {
-    "dataSource": "Cluster0",
-    "database": "dbe",
-    "collection": "imovel",
-    "sort": { "nome" : 1} }
+    payload = json.dumps({
+      "dataSource": "Cluster0",
+      "database": "dbe",
+      "collection": "imovel",
+      "sort": {
+        "nome": 1
+      }
+    })
     
-    #data = jsonify(data_text);
-
-    #data = request.get_json();
-    auth = {'api-key' : 'Cnf5kpOdWfE5oAJ5vTGoddZ0ZNI7acYh6G8sfAP6xye2imMfKKf1TMM5gQ35Six3' }    
-    r = requests.post("https://data.mongodb-api.com/app/data-plfzo/endpoint/data/beta/action/find",json=data  ,headers=auth);
-    #print(request.content);
-    #return jsonify(request.content)
-    #return str(r.status_code)
-    return r.content
-
+    headers = {
+      'api-key': 'Cnf5kpOdWfE5oAJ5vTGoddZ0ZNI7acYh6G8sfAP6xye2imMfKKf1TMM5gQ35Six3',
+      'Content-Type': 'application/json'
+    }
+    
+    response = requests.request("POST", url, headers=headers, data=payload)
+    
+    #print(response.text)    
+    #return r.content
+    return response.text
 
 
 # @paraio_api.route("/movim", methods=['POST']) 
