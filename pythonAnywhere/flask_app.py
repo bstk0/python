@@ -3,21 +3,23 @@
 
 from flask import Flask
 from flask import request
-from flask_cors import CORS
+#from flask_cors import CORS
 from pa_carro_api import carros_api
 from pa_emp_api import empdb_api
 from pa_paraio_api import paraio_api
+from db_imovel_api import imovel_api
 from global_ import Global
 
 LOCAL = True
 glb = Global()
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})
+#CORS(app, resources={r"/*": {"origins": "*"}})
 
 app.register_blueprint(carros_api, url_prefix='/pstgr')
 app.register_blueprint(empdb_api, url_prefix='/empdb') 
-app.register_blueprint(paraio_api, url_prefix='/paraio') 
+app.register_blueprint(paraio_api, url_prefix='/paraio')
+app.register_blueprint(imovel_api, url_prefix='/mongo') 
 
 
 @app.route('/')
