@@ -1,4 +1,5 @@
 #
+import os
 import requests
 import json
 from flask import Blueprint
@@ -10,6 +11,11 @@ from flask import Blueprint
 #glb = Global()
 
 imovel_api = Blueprint('imovel_api', __name__)
+
+@imovel_api.route("/test", methods=['GET']) 
+def buscar_dados_teste():
+    return os.getenv("MONGO_KEY")
+
 
 @imovel_api.route("/imovel", methods=['GET']) 
 def buscar_dados_imovel():
@@ -25,15 +31,15 @@ def buscar_dados_imovel():
     })
     
     headers = {
-      'api-key': 'Cnf5kpOdWfE5oAJ5vTGoddZ0ZNI7acYh6G8sfAP6xye2imMfKKf1TMM5gQ35Six3',
+      'api-key': os.getenv("MONGO_KEY"),
       'Content-Type': 'application/json'
     }
-    
+    print('antes ...')
     response = requests.request("POST", url, headers=headers, data=payload)
-    
-    #print(response.text)    
+    print('teste...')
+    print(response.text)    
     #return r.content
-    return response.text
+    return response.content
 
 
 # @paraio_api.route("/movim", methods=['POST']) 
