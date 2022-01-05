@@ -3,6 +3,7 @@ import os
 import requests
 import json
 from flask import Blueprint
+#from flask_app import requires_auth
 #from flask import jsonify
 #from flask import request
 #from flask import abort
@@ -14,6 +15,11 @@ imovel_api = Blueprint('imovel_api', __name__)
 
 @imovel_api.route("/test", methods=['GET']) 
 def buscar_dados_teste():
+    return os.getenv("MONGO_KEY")
+
+@imovel_api.route("/testsec", methods=['GET']) 
+#@requires_auth
+def buscar_dados_testsec():
     return os.getenv("MONGO_KEY")
 
 
