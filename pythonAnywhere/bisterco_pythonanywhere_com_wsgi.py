@@ -6,9 +6,16 @@
 # The below has been auto-generated for your Flask project
 
 import sys
+import os
+from dotenv import load_dotenv
 
 # add your project directory to the sys.path
 project_home = u'/home/bisterco/mysite'
+
+# env
+project_folder = os.path.expanduser('~/mysite')
+load_dotenv(os.path.join(project_folder,'b.env'))
+
 if project_home not in sys.path:
     sys.path = [project_home] + sys.path
 
