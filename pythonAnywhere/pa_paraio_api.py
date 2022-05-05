@@ -32,7 +32,8 @@ def insert_dados_movim():
 def buscar_dados_saldo():
     
     auth = {'Authorization' : 'Anonymous app:dbapp' }    
-    request = requests.get("https://paraio.com/v1/saldo/1143180213983645696",headers=auth);
+    # NOVO - 1433168973335105536 / ANTES: 1143180213983645696
+    request = requests.get("https://paraio.com/v1/saldo/1433168973305745408",headers=auth);
     #print(request.content);
     #return jsonify(request.content)
     return request.content
@@ -41,7 +42,8 @@ def buscar_dados_saldo():
 def update_saldo():
     data = request.get_json();
     auth = {'Authorization' : 'Anonymous app:dbapp' }    
-    r = requests.put("https://paraio.com/v1/saldo/1143180213983645696",json=data  ,headers=auth);
+    # NOVO - 1433168973305745408 / ANTES: 1143180213983645696
+    r = requests.put("https://paraio.com/v1/saldo/1433168973305745408",json=data  ,headers=auth);
     #print(request.content);
     #return jsonify(request.content)
     return str(r.status_code)
